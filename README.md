@@ -45,3 +45,8 @@ Navigate using map
 3. select `2D pose estimate` and select the direction of the robot indicating
 4. select `Nav2 goal` and select the point in the map to where the robot need to go and the oreintation of the robot. once you select the point the robot will start to move
 5. right hand ruled used in map coordinate systems. red - X, green - Y
+
+Waypoint Follower
+----------------
+1. robot completing different series of points to complete a cycle : waypoint follower
+2. select waypoint follower in the rviz2 and select the points need to be followed. then start the waypoint follower.
