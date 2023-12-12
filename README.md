@@ -23,4 +23,25 @@ wall or other obstacles
 
 Map
 ----
-1. we have tow files in the maps folder. pgm is the image of the map. another is yaml file. which has the details of the map 
+1. we have tow files in the maps folder. pgm is the image of the map. another is yaml file. which has the details of the map
+2. `nano my_map.pgm` this is used to store the pixel in x direction and y direction. if you multiply the pixels with resolution you can get the
+   real dimension of the map
+
+Quick fix with Nav2
+-------------------
+1. map not loading correctly or taking too much of time is one of the problem.
+2. change the fast DDS to cyclone DDS. `sudo apt update` `sudo apt install ros-humble-rmw-cyclonedds-cpp`
+3. tell the ros2 to use the dds `gedit ~/.bashrc`
+4. input the following `export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp` in the bashrc file and save it
+5. `cd /opt/ros/humble` `cd share/` `ls` `cd turtlebot3_navigation2/`
+6. `cd param/` `sudo gedit waffle.yaml` use ctrl + f to find the robot model type. comment it
+7. change the above param to `nav2_amcl::DifferentialMotionModel` modify and save it
+8. reboot the computer
+
+Navigate using map
+------------------
+1. `ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py`
+2. `ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=maps/my_map.yaml`
+3. select `2D pose estimate` and select the direction of the robot indicating
+4. select `Nav2 goal` and select the point in the map to where the robot need to go and the oreintation of the robot. once you select the point the robot will start to move
+5. right hand ruled used in map coordinate systems. red - X, green - Y
